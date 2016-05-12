@@ -34,19 +34,7 @@
     "url": "http://github.com/zerkalica/observable-helpers.git"
   },
   "keywords": [
-    "react",
-    "reactive-di",
-    "dependency injection",
-    "di",
-    "modular",
-    "state",
-    "functional",
-    "immutable",
-    "hot",
-    "live",
-    "replay",
-    "flux",
-    "elm"
+    "observable"
   ],
   "files": [
     "*.map",
@@ -54,9 +42,8 @@
     ".flowconfig",
     "README.md",
     "LICENSE",
-    "lib",
-    "dist",
-    "i"
+    "flow-typed",
+    "dist"
   ],
   "devDependencies": {
     "babel-cli": "^6.8.0",

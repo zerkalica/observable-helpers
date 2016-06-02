@@ -7,9 +7,9 @@ export default function promiseToObservable<V, E>(promise: Promise<V>): Observab
         throw new TypeError('promise argument is not a Promise')
     }
 
-    let isSubscribed: boolean = true;
-
     function promiseToObservableSubscriber(observer: SubscriptionObserver): () => void {
+        let isSubscribed: boolean = true
+
         function promiseToObservableUnsubscribe(): void {
             // todo: memory leak
             isSubscribed = false

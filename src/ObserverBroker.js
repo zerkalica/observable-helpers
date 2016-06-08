@@ -1,5 +1,4 @@
 /* @flow */
-import Observable from 'zen-observable'
 
 export default class ObserverBroker<V> {
     _observers: Array<SubscriptionObserver>;

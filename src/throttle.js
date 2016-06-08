@@ -1,7 +1,5 @@
 /* @flow */
 
-import Observable from 'zen-observable'
-
 class DelayedObserver<V, E> {
     _src: Observer<V, E>;
     _delay: number;

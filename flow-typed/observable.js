@@ -18,26 +18,56 @@ declare interface Subscription {
 
 declare function SubscriberFunction(observer: SubscriptionObserver): (() => void)|Subscription;
 
-declare interface Observable<V, E> {
+declare class $SymbolHasInstance mixins Symbol {}
+declare class $SymboIsConcatSpreadable mixins Symbol {}
+declare class $SymbolIterator mixins Symbol {}
+declare class $SymbolMatch mixins Symbol {}
+declare class $SymbolReplace mixins Symbol {}
+declare class $SymbolSearch mixins Symbol {}
+declare class $SymbolSpecies mixins Symbol {}
+declare class $SymbolSplit mixins Symbol {}
+declare class $SymbolToPrimitive mixins Symbol {}
+declare class $SymbolToStringTag mixins Symbol {}
+declare class $SymbolUnscopables mixins Symbol {}
+declare class $SymbolObservable mixins Symbol {}
+
+declare class Symbol {
+    static (value?:any): Symbol;
+    static for(key: string): Symbol;
+    static hasInstance: $SymbolHasInstance;
+    static isConcatSpreadable: $SymboIsConcatSpreadable;
+    static iterator: string; // polyfill '@@iterator'
+    static keyFor(sym: Symbol): ?string;
+    static length: 0;
+    static match: $SymbolMatch;
+    static replace: $SymbolReplace;
+    static search: $SymbolSearch;
+    static species: $SymbolSpecies;
+    static split: $SymbolSplit;
+    static observable: $SymbolObservable;
+    static toPrimitive: $SymbolToPrimitive;
+    static toStringTag: $SymbolToStringTag;
+    static unscopables: $SymbolUnscopables;
+    toString(): string;
+    valueOf(): ?Symbol;
+}
+
+declare class $ObservableObject<V, E> {
+    [id: $SymbolObservable]: () => Observable<V, E>;
+}
+
+declare class Observable<V, E> mixins $ObservableObject<V, E> {
     constructor(subscriber: SubscriberFunction): Observable<V, E>;
 
     // Subscribes to the sequence
     subscribe(observer: Observer<V, E>): Subscription;
 
     // Subscribes to the sequence with a callback, returning a promise
-    forEach(onNext: (v: any) => any): Promise<V>;
-
-    map<N>(mapFn: (value: V) => N): Observable<N, any>;
-
-    // Returns itself
-    // [Symbol.observable]() : Observable;
+    forEach(onNext: (v: V) => void): Promise<void>;
+    map<N, EE>(mapFn: (value: V) => N): Observable<N, EE>;
 
     // Converts items to an Observable
-    static of(...items: any) : Observable;
-
+    static of<VV, EE>(...items: any) : Observable<VV, EE>;
     // Converts an observable or iterable to an Observable
-    static from(observable: Observable|Iterator): Observable;
-
-    // Subclassing support
-    // static get [Symbol.species]() : Constructor;
+    static from<V, E>(observable: Observable|Iterator|$ObservableObject<V, E>): Observable<V, E>;
 }

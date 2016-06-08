@@ -1,7 +1,5 @@
 /* @flow */
 
-import Observable from 'zen-observable'
-
 export default function promiseToObservable<V, E>(promise: Promise<V>): Observable<V, E> {
     if (typeof promise.then !== 'function') {
         throw new TypeError('promise argument is not a Promise')

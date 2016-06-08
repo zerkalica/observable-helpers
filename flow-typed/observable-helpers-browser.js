@@ -1,26 +1,18 @@
 /* @flow */
 
-interface Resolution {
-    width: number;
-    height: number;
-}
+import type {Resolution, Attacheable} from 'observable-helpers/i/public'
 
 declare module 'observable-helpers/browser' {
     declare function observableFromEvent<V, E>(
-        target: Object,
+        target: Attacheable,
         eventName: string
     ): Observable<V, E>;
 
-    declare function createBrowserResolution(target: Object, delay?: number): {
-        observable: Observable<Resolution, Error>;
-        value: Resolution;
-    };
-}
-
-declare module 'observable-helpers/Resolution' {
-    declare class Resolution {
-        width: number;
-        height: number;
-        constructor(width: number, height: number): void;
-    }
+    declare function createBrowserResolution(
+        target: {
+            innerWidth: number,
+            innerHeight: number
+        },
+        delay: number
+    ): Resolution & $ObservableObject;
 }

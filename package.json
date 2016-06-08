@@ -43,7 +43,8 @@
     "README.md",
     "LICENSE",
     "flow-typed",
-    "dist"
+    "dist",
+    "i"
   ],
   "devDependencies": {
     "babel-cli": "^6.8.0",
@@ -66,6 +67,7 @@
   },
   "dependencies": {
     "es6-error": "^3.0.0",
+    "symbol-observable": "^0.2.4",
     "zen-observable": "^0.2.1"
   }
 }

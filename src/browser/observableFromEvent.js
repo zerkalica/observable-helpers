@@ -1,13 +1,13 @@
 /* @flow */
 
-import Observable from 'zen-observable'
+import type {Attacheable} from 'observable-helpers/i/public'
 
 export default function observableFromEvent<V, E>(
-    target: Object,
+    target: Attacheable,
     eventName: string
 ): Observable<V, E> {
     function observableFromEventSubscriber(observer: SubscriptionObserver): () => void {
-        function handler(data): void {
+        function handler(data: mixed): void {
             observer.next(data)
         }
         if (typeof target.addEventListener === 'function') {

@@ -7,8 +7,12 @@ declare module 'observable-helpers' {
         error(err: Error): void;
         complete(): void;
     }
-
     declare function promiseToObservable<V, E>(promise: Promise<V>): Observable<V, E>;
     declare function throttle<V, E>(src: Observable<V, E>, delay: number): Observable<V, E>;
     declare function timeoutPromise<D>(promise: Promise<D>, timeout: number): Promise<D>;
+    declare class Resolution {
+        width: number;
+        height: number;
+        constructor(width: number, height: number): void;
+    }
 }

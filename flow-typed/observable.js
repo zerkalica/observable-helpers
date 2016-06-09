@@ -64,7 +64,6 @@ declare class Observable<V, E> mixins $ObservableObject<V, E> {
 
     // Subscribes to the sequence with a callback, returning a promise
     forEach(onNext: (v: V) => void): Promise<void>;
-    map<N, EE>(mapFn: (value: V) => N): Observable<N, EE>;
 
     // Converts items to an Observable
     static of<VV, EE>(...items: any) : Observable<VV, EE>;

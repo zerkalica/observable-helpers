@@ -66,8 +66,6 @@
     "sinon": "^1.17.4"
   },
   "dependencies": {
-    "es6-error": "^3.0.0",
-    "symbol-observable": "^0.2.4",
-    "zen-observable": "^0.2.1"
+    "es6-error": "^3.0.0"
   }
 }

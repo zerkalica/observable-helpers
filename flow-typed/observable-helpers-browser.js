@@ -13,6 +13,6 @@ declare module 'observable-helpers/browser' {
             innerWidth: number,
             innerHeight: number
         },
-        delay: number
+        delay?: number
     ): Resolution & $ObservableObject;
 }

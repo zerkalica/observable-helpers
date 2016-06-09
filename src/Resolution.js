@@ -1,7 +1,5 @@
 /* @flow */
 
-import symbolObservable from 'symbol-observable'
-
 export default class Resolution {
     width: number;
     height: number;
@@ -16,7 +14,7 @@ export default class Resolution {
         this.width = width
         this.height = height
         if (observable) {
-            (this: Object)[symbolObservable] = () => observable
+            (this: Object)[Symbol.observable] = () => observable
         }
     }
 }

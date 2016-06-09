@@ -10,7 +10,7 @@ export default function createBrowserResolution(
         innerWidth: number,
         innerHeight: number
     },
-    delay: number = 300
+    delay?: number = 300
 ): Resolution {
     const observable: Observable<Resolution, Error> =
         mapObservable(

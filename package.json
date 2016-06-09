@@ -1,6 +1,6 @@
 {
   "name": "observable-helpers",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "zen-observable helpers",
   "publishConfig": {
     "registry": "https://registry.npmjs.org"

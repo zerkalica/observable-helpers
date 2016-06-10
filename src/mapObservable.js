@@ -13,7 +13,17 @@ class MapObserver<V, E, R> {
     }
 
     next(val: V): void {
-        this._observer.next(this._mapFn(val))
+        if (this._observer.closed) {
+            return
+        }
+        let v: R;
+        try {
+            v = this._mapFn(val)
+        } catch (e) {
+            this.error(e)
+            return
+        }
+        this._observer.next(v)
     }
 
     error(err: E): void {

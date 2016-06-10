@@ -23,8 +23,12 @@ export default class ObserverBroker<V> {
 
     next(value: V): void {
         const observers = this._observers
-        for (let i = 0, l = observers.length; i < l; i++) {
-            observers[i].next(value)
+        try {
+            for (let i = 0, l = observers.length; i < l; i++) {
+                observers[i].next(value)
+            }
+        } catch (e) {
+            this.error(e)
         }
     }
 

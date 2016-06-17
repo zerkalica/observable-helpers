@@ -52,11 +52,9 @@ declare class Symbol {
     valueOf(): ?Symbol;
 }
 
-declare class $ObservableObject<V, E> {
-    [id: $SymbolObservable]: () => Observable<V, E>;
-}
+declare type $ObservableObject<V, E> = mixed
 
-declare class Observable<V, E> mixins $ObservableObject<V, E> {
+declare class Observable<V, E> {
     constructor(subscriber: SubscriberFunction): Observable<V, E>;
 
     // Subscribes to the sequence

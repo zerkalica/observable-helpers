@@ -179,7 +179,7 @@ import {
  *         console.log(window.width, window.height)
  *     }
  * })
- *
+ * ```
  */
 declare function observableFromEvent<V, E>(
     target: Attacheable,

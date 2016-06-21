@@ -5,10 +5,22 @@ Helpers on top of [es-observable](https://github.com/zenparsing/es-observable)
 Need observable polyfill from [core-js](https://github.com/zloirock/core-js) or [zen-observable](https://github.com/zenparsing/zen-observable)
 
 Features:
+
 Generic: map, throttle, timeoutPromise, ObserverBroker
+
 Browser: create observable from DOMElement event, observable resolution object from window
 
+
 ## Generic
+
+```js
+// @flow
+import {
+    ObservableBroker,
+    promiseToObservable
+} from 'observable-helpers'
+// ...
+```
 
 ```js
 // @flow
@@ -143,6 +155,15 @@ declare class Resolution {
 ```
 
 ## Browser
+
+```js
+// @flow
+import {
+    observableFromEvent,
+    createBrowserResolution
+} from 'observable-helpers/browser'
+// ...
+```
 
 ```js
 // @flow

@@ -13,8 +13,6 @@ export default class Resolution {
     ) {
         this.width = width
         this.height = height
-        if (observable) {
-            (this: Object)[Symbol.observable] = () => observable
-        }
+        ;(this: Object)[Symbol.observable] = () => observable
     }
 }

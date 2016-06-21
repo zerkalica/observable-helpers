@@ -1,6 +1,9 @@
 /* @flow */
 
-export default function promiseToObservable<V, E>(promise: Promise<V>): Observable<V, E> {
+export default function promiseToObservable<V, E>(
+    promise: Promise<V>,
+    thenIsNext?: boolean = false
+): Observable<V, E> {
     if (typeof promise.then !== 'function') {
         throw new TypeError('promise argument is not a Promise')
     }
@@ -17,7 +20,12 @@ export default function promiseToObservable<V, E>(promise: Promise<V>): Observab
         }
         function success(data: V): void {
             if (isSubscribed) {
-                observer.complete(data)
+                if (thenIsNext) {
+                    observer.next(data)
+                    observer.complete()
+                } else {
+                    observer.complete(data)
+                }
             }
         }
         function error(e: E): void {

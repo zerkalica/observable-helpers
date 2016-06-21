@@ -1,10 +1,12 @@
 /* @flow */
 
+function noop() {}
+
 export default class ObserverBroker<V> {
     _observers: Array<SubscriptionObserver>;
     observable: Observable<V, Error>;
 
-    constructor() {
+    constructor(unsubscribe?: () => void = noop) {
         const self = this
         this._observers = []
         function subscription(observer: SubscriptionObserver) {
@@ -14,11 +16,14 @@ export default class ObserverBroker<V> {
                 return target !== observer
             }
 
-            return function unsubscribe() {
+            return function _unsubscribe() {
                 self._observers = self._observers.filter(filterFn)
+                if (self._observers.length === 0) {
+                    unsubscribe()
+                }
             }
         }
-        this.observable = new Observable(subscription);
+        this.observable = new Observable(subscription)
     }
 
     next(value: V): void {

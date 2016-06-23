@@ -129,4 +129,18 @@ declare module 'observable-helpers' {
         height: number;
         constructor(width: number, height: number): void;
     }
+
+    /**
+     * Is value observable
+     *
+     * @example
+     * ```js
+     * // @flow
+     *
+     * isObservable({
+     *     [Symbol.observable]() {}
+     * }) === true
+     * ```
+     */
+    declare function isObservable(val: mixed): boolean;
 }

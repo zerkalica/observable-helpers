@@ -34,7 +34,12 @@
     "url": "http://github.com/zerkalica/observable-helpers.git"
   },
   "keywords": [
-    "observable"
+    "observable",
+    "core-js",
+    "map",
+    "promise",
+    "throttle",
+    "timeout"
   ],
   "files": [
     "*.map",

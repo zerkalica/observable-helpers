@@ -1,5 +1,9 @@
 /* @flow */
 
+
+/**
+ * Resolution class with width and height
+ */
 export default class Resolution {
     width: number;
     height: number;

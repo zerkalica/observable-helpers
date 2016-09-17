@@ -35,6 +35,19 @@ class MapObserver<V, E, R> {
     }
 }
 
+/**
+ * Map observable value
+ *
+ * @example
+ * ```js
+ * // @flow
+ * mapObservable(new Observable((observer: SubscriptionObserver) => {
+ *     observer.next(1)
+ * }), (val: number) => val * 2)
+ *
+ * // outputs: 2
+ * ```
+ */
 export default function mapObservable<V, R, E>(
     observable: Observable<V, E>,
     mapFn: (val: V) => R

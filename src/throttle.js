@@ -54,6 +54,20 @@ class DelayedObserver<V, E> {
     }
 }
 
+/**
+ * Throttle observable events
+ *
+ * @example
+ * ```js
+ * // @flow
+ * throttle(new Observable((observer: SubscriptionObserver) => {
+ *     observer.next('1')
+ *     observer.next('2')
+ * }), 100)
+ *
+ * // outputs: 2
+ * ```
+ */
 export default function throttle<V, E>(src: Observable<V, E>, delay: number): Observable<V, E> {
     function subscribe(observer: SubscriptionObserver<V, E>): () => void {
         const subscription = src.subscribe(new DelayedObserver(observer, delay));

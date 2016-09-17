@@ -7,6 +7,8 @@ import timeoutPromise from 'observable-helpers/timeoutPromise'
 import Resolution from 'observable-helpers/Resolution'
 import mapObservable from 'observable-helpers/mapObservable'
 import isObservable from 'observable-helpers/isObservable'
+import pollingPromise, {createTimeoutFn} from 'observable-helpers/pollingPromise'
+
 export {
     ObserverBroker,
     promiseToObservable,
@@ -14,5 +16,7 @@ export {
     timeoutPromise,
     Resolution,
     mapObservable,
-    isObservable
+    isObservable,
+    pollingPromise,
+    createTimeoutFn
 }

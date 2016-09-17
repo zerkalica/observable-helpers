@@ -1,5 +1,36 @@
 /* @flow */
 
+/**
+ * Convert promise to observable
+ *
+ * @param Promise promise input promise
+ * @param [boolean] thenIsNext
+ * - on then(data) generate next(data), complete(), on false - generate complete(data)
+ *
+ * @example
+ * ```js
+ * // flow
+ * promiseToObservable(Promise.resolve('test'))
+ *     .subscribe({
+ *         complete(val: string): void {
+ *             console.log('complete', val)
+ *         }
+ *     })
+ * // outputs: complete test
+ *
+ * promiseToObservable(Promise.resolve('test'), true)
+ *     .subscribe({
+ *         next(val: string): void {
+ *             console.log('next', val)
+ *         },
+ *         complete() {
+ *             console.log('complete')
+ *         }
+ *     })
+ * // outputs: next test
+ * // complete
+ * ```
+ */
 export default function promiseToObservable<V, E>(
     promise: Promise<V>,
     thenIsNext?: boolean = false
@@ -8,7 +39,7 @@ export default function promiseToObservable<V, E>(
         throw new TypeError('promise argument is not a Promise')
     }
 
-    function promiseToObservableSubscriber(observer: SubscriptionObserver): () => void {
+    function promiseToObservableSubscriber(observer: SubscriptionObserver<V, E>): () => void {
         let isSubscribed: boolean = true
 
         function promiseToObservableUnsubscribe(): void {

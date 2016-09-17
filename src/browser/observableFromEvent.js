@@ -1,13 +1,32 @@
 /* @flow */
 
-import type {Attacheable} from 'observable-helpers/i/public'
+export interface Attachable {
+    addEventListener?: ?(eventName: string, handler: Function) => void;
+    removeEventListener?: ?(eventName: string, handler: Function) => void;
+    attachEvent?: ?(eventName: string, handler: Function) => void;
+    detachEvent?: ?(eventName: string, handler: Function) => void;
+}
 
+/**
+ * Create observable from browser window event
+ *
+ * @example
+ * ```js
+ * // @flow
+ * observableFromEvent(window, 'resize')
+ * .subscribe({
+ *     next(e: Event) => {
+ *         console.log(window.width, window.height)
+ *     }
+ * })
+ *
+ */
 export default function observableFromEvent<V, E>(
-    target: Attacheable,
+    target: Attachable,
     eventName: string
 ): Observable<V, E> {
-    function observableFromEventSubscriber(observer: SubscriptionObserver): () => void {
-        function handler(data: mixed): void {
+    function observableFromEventSubscriber(observer: SubscriptionObserver<V, E>): () => void {
+        function handler(data: V): void {
             observer.next(data)
         }
         if (typeof target.addEventListener === 'function') {

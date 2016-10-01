@@ -1,4 +1,5 @@
 /* @flow */
+/* eslint-disable import/prefer-default-export */
 
 import Err from 'es6-error'
 

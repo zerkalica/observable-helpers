@@ -14,11 +14,11 @@ import mapObservable from 'observable-helpers/mapObservable'
  *
  * // scan resolution each 100 ms
  * createBrowserResolution(window, 100)
- * 	.subscribe({
- * 	    next(r: Resolution) {
- * 	        console.log(r)
- * 	    }
- * 	})
+ *     .subscribe({
+ *         next(r: Resolution) {
+ *             console.log(r)
+ *         }
+ *     })
  *
  *  // Outputs on resolution change: Resolution width: 1024, height: 768
  * ```

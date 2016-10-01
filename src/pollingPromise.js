@@ -16,7 +16,10 @@ export default function pollingPromise<V>(
                     if (isComplete && isComplete(value)) {
                         observer.complete()
                     } else {
-                        handle = setTimeout(doLoad, timeoutFn())
+                        const timeout: number = timeoutFn()
+                        if (timeout) {
+                            handle = setTimeout(doLoad, timeout)
+                        }
                     }
                 })
                 .catch((error: Error) => observer.error(error))
@@ -35,7 +38,7 @@ export default function pollingPromise<V>(
 export function createTimeoutFn(from: number): () => number {
     let step: number = 0
     return function timeoutFn(): number {
-        step++
-        return from
+        step = step + 1 // eslint-disable-line
+        return from + (step * 500)
     }
 }

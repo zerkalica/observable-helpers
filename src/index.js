@@ -1,13 +1,13 @@
 /* @flow */
 
-import ObserverBroker from 'observable-helpers/ObserverBroker'
-import promiseToObservable from 'observable-helpers/promiseToObservable'
-import throttle from 'observable-helpers/throttle'
-import timeoutPromise from 'observable-helpers/timeoutPromise'
-import Resolution from 'observable-helpers/Resolution'
-import mapObservable from 'observable-helpers/mapObservable'
-import isObservable from 'observable-helpers/isObservable'
-import pollingPromise, {createTimeoutFn} from 'observable-helpers/pollingPromise'
+import ObserverBroker from './ObserverBroker'
+import promiseToObservable from './promiseToObservable'
+import throttle from './throttle'
+import timeoutPromise from './timeoutPromise'
+import Resolution from './Resolution'
+import mapObservable from './mapObservable'
+import isObservable from './isObservable'
+import pollingPromise, {createTimeoutFn} from './pollingPromise'
 
 export {
     ObserverBroker,

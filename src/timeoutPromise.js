@@ -19,7 +19,7 @@ import {TimeoutError} from 'observable-helpers/exceptions'
 export default function timeoutPromise<D>(promise: Promise<D>, timeout: number): Promise<D> {
     return Promise.race([
         promise,
-        new Promise((resolve, reject) => {
+        new Promise((resolve: (data: D) => void, reject: (err: any) => void) => {
             const err = new TimeoutError()
             setTimeout(() => reject(err), timeout)
         })

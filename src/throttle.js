@@ -1,16 +1,16 @@
 /* @flow */
 
 class DelayedObserver<V, E> {
-    _src: Observer<V, E>;
-    _delay: number;
+    _src: Observer<V, E>
+    _delay: number
 
-    _value: V;
-    _completeValue: ?V;
-    _error: E;
+    _value: V
+    _completeValue: ?V
+    _error: E
 
-    _valueHandle: ?number;
-    _errorHandle: ?number;
-    _completeHandle: ?number;
+    _valueHandle: ?number
+    _errorHandle: ?number
+    _completeHandle: ?number
 
     constructor(src: Observer<V, E>, delay: number) {
         this._src = src
@@ -70,7 +70,7 @@ class DelayedObserver<V, E> {
  */
 export default function throttle<V, E>(src: Observable<V, E>, delay: number): Observable<V, E> {
     function subscribe(observer: SubscriptionObserver<V, E>): () => void {
-        const subscription = src.subscribe(new DelayedObserver(observer, delay));
+        const subscription = src.subscribe(new DelayedObserver(observer, delay))
         return function unsubscribe(): void {
             subscription.unsubscribe()
         }

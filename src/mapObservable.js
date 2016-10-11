@@ -1,8 +1,8 @@
 /* @flow */
 
 class MapObserver<V, E, R> {
-    _observer: SubscriptionObserver<R, E>;
-    _mapFn: (val: V) => R;
+    _observer: SubscriptionObserver<R, E>
+    _mapFn: (val: V) => R
 
     constructor(
         observer: SubscriptionObserver<R, E>,
@@ -16,7 +16,7 @@ class MapObserver<V, E, R> {
         if (this._observer.closed) {
             return
         }
-        let v: R;
+        let v: R
         try {
             v = this._mapFn(val)
         } catch (e) {
